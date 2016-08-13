@@ -1,0 +1,18 @@
+<div class="row row-no-padding">
+    <div class="col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-0">
+        <%= image_tag(@movie.image_url, class: "img-poster text-xs-center", alt: @movie.title) %>
+    </div>
+    <div id="movie_info" class="col-xs-12 col-sm-8 text-padding">
+      <div class="col-padding">
+        <h2><%= @movie.title %></h2>
+          Year <span class="badge"><%= @movie.year %></span>
+          Type <span class="badge"><%= @movie.movie_type %></span>
+          Genre <span class="badge"><%= @movie.genre %></span>
+          Runtime <span class="badge"><%= @movie.runtime %></span>
+      </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-8">
+      <p class="col-padding"><%= @movie.plot %></p>
+    </div
+</div>

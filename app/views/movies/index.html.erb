@@ -1,0 +1,51 @@
+<!-- Jumbotron Header -->
+<header class="jumbotron hero-spacer">
+    <h1>A Warm Welcome!</h1>
+</header>
+<hr>
+
+<%= render 'layouts/flash_messages' %>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="bs-component">
+              <%= form_tag(movies_path, :method => "get", id: "search-form", class: "well form-search") do %>
+                <fieldset>
+                    <legend>By Title</legend>
+                </fieldset>
+
+                <label class="control-label">Title:</label>
+                <%= text_field_tag :search, params[:search], placeholder: "Search Movies" %>
+                <label class="control-label">Year:</label>
+                <%= text_field_tag :year, params[:year], placeholder: "Search year" %>
+                <%= submit_tag "Search", class: "btn-sm btn-primary" %>
+              <% end %>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-lg-12 text-center">
+      <%= will_paginate %>
+    </div>
+</div>
+
+<!-- Page Features -->
+<div class="row text-center">
+
+  <% @movies.each do |m| %>
+    <div class="col-md-3 col-sm-6 hero-feature">
+        <div class="poster">
+            <%# image_tag(m.image_url,size: "252x374", alt: m.image_url) %>
+            <%= link_to m do %>
+              <%= image_tag(m.image_url,size: "252x374", alt: m.title) %>
+            <% end %>
+            <div class="caption">
+                <h3><%= m.title %></h3>
+                <p><%= m.year %></p>
+            </div>
+        </div>
+    </div>
+  <% end %>
+
+</div>
